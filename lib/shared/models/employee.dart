@@ -1,11 +1,11 @@
 import 'package:estudo_sqlite/services/sqlite_service.dart';
-import 'package:estudo_sqlite/shared/enums/e_sex.dart';
+import 'package:estudo_sqlite/shared/enums/sex.dart';
 
 class Employee {
   int id = 0;
   String name = '';
   int age = 0;
-  ESex sex = ESex.private;
+  Sex sex = Sex.private;
   String sector = '';
 
   Employee({
