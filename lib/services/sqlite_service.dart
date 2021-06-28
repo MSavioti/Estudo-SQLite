@@ -30,10 +30,12 @@ class SqliteService {
     });
   }
 
+  //TODO: make it right
   static ESex idToSex(int id) {
     return ESex.private;
   }
 
+  //TODO: make it right
   static int sexToId(ESex sex) {
     return 0;
   }
