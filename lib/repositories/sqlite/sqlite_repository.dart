@@ -18,15 +18,13 @@ class SqliteRepository {
     }
   }
 
-  Future<bool> addEmployee(Map<String, dynamic> employee,
-      {sqlite.ConflictAlgorithm conflictAlgorithm =
-          sqlite.ConflictAlgorithm.abort}) async {
+  Future<bool> addEmployee(Map<String, dynamic> employee) async {
     try {
       final db = await database();
       await db.insert(
         SqlQueries.employeesTableName,
         employee,
-        conflictAlgorithm: conflictAlgorithm,
+        conflictAlgorithm: sqlite.ConflictAlgorithm.replace,
       );
       return true;
     } catch (e) {
@@ -36,19 +34,31 @@ class SqliteRepository {
 
   Future<bool> updateEmployee(Map<String, dynamic> employee) async {
     try {
-      return await addEmployee(employee,
-          conflictAlgorithm: sqlite.ConflictAlgorithm.replace);
+      final db = await database();
+      await db.update(
+        SqlQueries.employeesTableName,
+        employee,
+        where: 'id = ?',
+        whereArgs: employee["id"],
+      );
+      return true;
     } catch (e) {
       return false;
     }
   }
 
   Future<bool> removeEmployee(int id) async {
-    throw UnimplementedError();
-  }
-
-  Future<Map<String, dynamic>> findEmployee(int id) async {
-    throw UnimplementedError();
+    try {
+      final db = await database();
+      await db.delete(
+        SqlQueries.employeesTableName,
+        where: 'id = ?',
+        whereArgs: [id],
+      );
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
   Future<List<Map<String, dynamic>>> listEmployees() async {

@@ -9,12 +9,12 @@ class SqliteService {
     return await _repository.addEmployee(employee.toMap());
   }
 
-  Future<bool> updateEmployee(int id) async {
-    throw UnimplementedError();
+  Future<bool> updateEmployee(Employee employee) async {
+    return await _repository.updateEmployee(employee.toMap());
   }
 
-  Future<bool> removeEmployee(int id) async {
-    throw UnimplementedError();
+  Future<bool> removeEmployee(Employee employee) async {
+    return await _repository.removeEmployee(employee.id);
   }
 
   Future<Employee> findEmployee(int id) async {
