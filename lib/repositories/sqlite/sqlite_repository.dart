@@ -1,5 +1,4 @@
 import 'package:estudo_sqlite/repositories/sqlite/helpers/sql_queries.dart';
-import 'package:estudo_sqlite/shared/enums/gender.dart';
 import 'package:path/path.dart' as path;
 import 'package:sqflite/sqflite.dart' as sqlite;
 
