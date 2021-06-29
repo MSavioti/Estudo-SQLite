@@ -1,17 +1,17 @@
 import 'package:estudo_sqlite/services/sqlite_service.dart';
-import 'package:estudo_sqlite/shared/enums/sex.dart';
+import 'package:estudo_sqlite/shared/enums/gender.dart';
 
 class Employee {
   int id = 0;
   String name = '';
   int age = 0;
-  Sex sex = Sex.private;
+  Gender gender = Gender.private;
   String sector = '';
 
   Employee({
     required this.name,
     required this.age,
-    required this.sex,
+    required this.gender,
     required this.sector,
   });
 
@@ -20,7 +20,7 @@ class Employee {
       'id': id,
       'name': name,
       'age': age,
-      'sex': SqliteService.sexToId(sex),
+      'gender': SqliteService.genderToId(gender),
       'sector': sector,
     };
   }
@@ -29,7 +29,7 @@ class Employee {
     return Employee(
       name: employee['name'],
       age: employee['age'],
-      sex: SqliteService.idToSex(employee['sex']),
+      gender: SqliteService.idToGender(employee['gender']),
       sector: employee['sector'],
     );
   }

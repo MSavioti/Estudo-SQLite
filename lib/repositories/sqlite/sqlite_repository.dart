@@ -77,8 +77,8 @@ class SqliteRepository {
       final database = await sqlite.openDatabase(
         path.join(await sqlite.getDatabasesPath(), 'employee_database.db'),
         version: version,
-        onCreate: (db, version) {
-          return db.execute(SqlQueries.createEmployeeTable);
+        onCreate: (db, version) async {
+          return _createDatabase(db);
         },
       );
       isDatabaseOpen = true;
@@ -86,6 +86,11 @@ class SqliteRepository {
     } catch (e) {
       rethrow;
     }
+  }
+
+  void _createDatabase(sqlite.Database database) async {
+    await database.execute(SqlQueries.createEmployeeTable);
+    await database.execute(SqlQueries.createEmployeeTable);
   }
 
   Future<void> _closeConnection() {

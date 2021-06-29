@@ -1,5 +1,5 @@
 import 'package:estudo_sqlite/repositories/sqlite/sqlite_repository.dart';
-import 'package:estudo_sqlite/shared/enums/sex.dart';
+import 'package:estudo_sqlite/shared/enums/gender.dart';
 import 'package:estudo_sqlite/shared/models/employee.dart';
 
 class SqliteService {
@@ -31,12 +31,12 @@ class SqliteService {
   }
 
   //TODO: make it right
-  static Sex idToSex(int id) {
-    return Sex.private;
+  static Gender idToGender(int id) {
+    return Gender.private;
   }
 
   //TODO: make it right
-  static int sexToId(Sex sex) {
+  static int genderToId(Gender sex) {
     return 0;
   }
 }
