@@ -36,7 +36,7 @@ class SqliteService {
   }
 
   //TODO: make it right
-  static int genderToId(Gender sex) {
+  static int genderToId(Gender gender) {
     return 0;
   }
 }
