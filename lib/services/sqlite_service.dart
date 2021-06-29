@@ -34,7 +34,23 @@ class SqliteService {
     });
   }
 
-  void teste() {}
+  void teste() async {
+    var employee = Employee(
+      name: 'José Rubinato',
+      age: 19,
+      gender: Gender.masculine,
+      sector: 'Marketing',
+    );
+    addEmployee(employee);
+    employee.id = 1;
+    employee.name = 'Adoniran Barbosa';
+    employee.age = 55;
+    employee.gender = Gender.undisclosed;
+    employee.sector = 'Sambista';
+    addEmployee(employee);
+    final employees = await listEmployees();
+    employees.forEach(print);
+  }
 
   static Gender genderFromString(String string) {
     switch (string) {

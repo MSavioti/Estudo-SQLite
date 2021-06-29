@@ -17,7 +17,6 @@ class Employee {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
       'name': name,
       'age': age,
       'gender': gender.toString().split('.').last,
@@ -25,12 +24,19 @@ class Employee {
     };
   }
 
-  static Employee fromMap(Map<String, dynamic> employee) {
-    return Employee(
-      name: employee['name'],
-      age: employee['age'],
-      gender: SqliteService.genderFromString(employee['gender']),
-      sector: employee['sector'],
+  static Employee fromMap(Map<String, dynamic> employeeMap) {
+    Employee employee = Employee(
+      name: employeeMap['name'],
+      age: employeeMap['age'],
+      gender: SqliteService.genderFromString(employeeMap['gender']),
+      sector: employeeMap['sector'],
     );
+    employee.id = employeeMap['id'];
+    return employee;
+  }
+
+  @override
+  String toString() {
+    return 'Employee n° $id\nName: $name\nAge: $age\nGender: ${gender.toString().split('.').last}\nSector: $sector\n';
   }
 }
