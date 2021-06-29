@@ -20,19 +20,17 @@ class _EmployeeListViewState extends State<EmployeeListView> {
 
         final employees = snapshot.data;
 
-        return SingleChildScrollView(
-          child: ListView.builder(
-            itemCount: employees!.length,
-            shrinkWrap: true,
-            itemBuilder: (_, i) {
-              return Card(
-                child: ListTile(
-                  title: Text(employees[i].name),
-                  subtitle: Text(employees[i].sector),
-                ),
-              );
-            },
-          ),
+        return ListView.builder(
+          itemCount: employees!.length,
+          shrinkWrap: true,
+          itemBuilder: (_, i) {
+            return Card(
+              child: ListTile(
+                title: Text(employees[i].name),
+                subtitle: Text(employees[i].sector),
+              ),
+            );
+          },
         );
       },
     );
