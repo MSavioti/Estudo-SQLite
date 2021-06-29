@@ -47,8 +47,8 @@ class SqliteService {
     employee.gender = Gender.undisclosed;
     employee.sector = 'Sambista';
     addEmployee(employee);
-    final employees = await listEmployees();
-    employees.forEach(print);
+    // final employees = await listEmployees();
+    // employees.forEach(print);
   }
 
   static Gender genderFromString(String string) {
