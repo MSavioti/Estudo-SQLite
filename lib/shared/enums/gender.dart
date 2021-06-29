@@ -1,1 +1,1 @@
-enum Gender { masculine, feminine, nonBinary, private }
+enum Gender { masculine, feminine, nonBinary, undisclosed }

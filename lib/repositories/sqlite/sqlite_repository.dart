@@ -1,4 +1,5 @@
 import 'package:estudo_sqlite/repositories/sqlite/helpers/sql_queries.dart';
+import 'package:estudo_sqlite/shared/enums/gender.dart';
 import 'package:path/path.dart' as path;
 import 'package:sqflite/sqflite.dart' as sqlite;
 
@@ -73,24 +74,21 @@ class SqliteRepository {
   }
 
   Future<sqlite.Database> _openDatabase({int version = 1}) async {
+    print('Opening database...');
     try {
       final database = await sqlite.openDatabase(
         path.join(await sqlite.getDatabasesPath(), 'employee_database.db'),
         version: version,
         onCreate: (db, version) async {
-          return _createDatabase(db);
+          return db.execute(SqlQueries.createEmployeeTable);
         },
       );
+      print('Opened database.');
       isDatabaseOpen = true;
       return database;
     } catch (e) {
       rethrow;
     }
-  }
-
-  void _createDatabase(sqlite.Database database) async {
-    await database.execute(SqlQueries.createEmployeeTable);
-    await database.execute(SqlQueries.createEmployeeTable);
   }
 
   Future<void> _closeConnection() {

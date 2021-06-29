@@ -5,6 +5,10 @@ import 'package:estudo_sqlite/shared/models/employee.dart';
 class SqliteService {
   late SqliteRepository _repository;
 
+  SqliteService() {
+    _repository = SqliteRepository();
+  }
+
   Future<bool> addEmployee(Employee employee) async {
     return await _repository.addEmployee(employee.toMap());
   }
@@ -30,13 +34,20 @@ class SqliteService {
     });
   }
 
-  //TODO: make it right
-  static Gender idToGender(int id) {
-    return Gender.private;
-  }
+  void teste() {}
 
-  //TODO: make it right
-  static int genderToId(Gender gender) {
-    return 0;
+  static Gender genderFromString(String string) {
+    switch (string) {
+      case 'masculine':
+        return Gender.masculine;
+      case 'feminine':
+        return Gender.feminine;
+      case 'nonBinary':
+        return Gender.nonBinary;
+      case 'undisclosed':
+        return Gender.undisclosed;
+      default:
+        throw ArgumentError();
+    }
   }
 }

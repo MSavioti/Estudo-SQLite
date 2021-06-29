@@ -5,7 +5,7 @@ class Employee {
   int id = 0;
   String name = '';
   int age = 0;
-  Gender gender = Gender.private;
+  Gender gender = Gender.undisclosed;
   String sector = '';
 
   Employee({
@@ -20,7 +20,7 @@ class Employee {
       'id': id,
       'name': name,
       'age': age,
-      'gender': SqliteService.genderToId(gender),
+      'gender': gender.toString().split('.').last,
       'sector': sector,
     };
   }
@@ -29,7 +29,7 @@ class Employee {
     return Employee(
       name: employee['name'],
       age: employee['age'],
-      gender: SqliteService.idToGender(employee['gender']),
+      gender: SqliteService.genderFromString(employee['gender']),
       sector: employee['sector'],
     );
   }
