@@ -37,6 +37,6 @@ class Employee {
 
   @override
   String toString() {
-    return 'Employee n° $id\nName: $name\nAge: $age\nGender: ${gender.toString().split('.').last}\nSector: $sector\n';
+    return '\nEmployee n° $id\nName: $name\nAge: $age\nGender: ${gender.toString().split('.').last}\nSector: $sector\n';
   }
 }

@@ -42,7 +42,6 @@ class SqliteService {
       sector: 'Marketing',
     );
     addEmployee(employee);
-    employee.id = 1;
     employee.name = 'Adoniran Barbosa';
     employee.age = 55;
     employee.gender = Gender.undisclosed;
