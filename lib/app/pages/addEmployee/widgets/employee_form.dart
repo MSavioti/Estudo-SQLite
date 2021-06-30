@@ -32,11 +32,21 @@ class _EmployeeFormState extends State<EmployeeForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Name'),
             TextFormField(
+              autofocus: true,
               validator: _validateTextField,
               controller: _nameController,
+              decoration: InputDecoration(
+                border: UnderlineInputBorder(),
+                labelText: 'Name',
+                hintText: 'Employee\'s name',
+                hintStyle: TextStyle(
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
             ),
+            SizedBox(height: 16.0),
+            TextFormField(),
             SizedBox(height: 16.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
