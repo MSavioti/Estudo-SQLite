@@ -6,13 +6,9 @@ class AddEmployeePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.lime[100],
       appBar: AppBar(
         title: Text(
-          'Add Contact',
-          style: TextStyle(
-            color: Colors.green[900],
-          ),
+          'Add Employee',
         ),
       ),
       body: Center(
