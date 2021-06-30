@@ -1,5 +1,4 @@
 import 'package:estudo_sqlite/repositories/sqlite/sqlite_repository.dart';
-import 'package:estudo_sqlite/shared/enums/gender.dart';
 import 'package:estudo_sqlite/shared/models/employee.dart';
 
 class SqliteService {
@@ -34,35 +33,21 @@ class SqliteService {
     });
   }
 
-  void teste() async {
-    var employee = Employee(
-      name: 'José Rubinato',
-      age: 19,
-      gender: Gender.masculine,
-      sector: 'Marketing',
-    );
-    addEmployee(employee);
-    employee.name = 'Adoniran Barbosa';
-    employee.age = 55;
-    employee.gender = Gender.undisclosed;
-    employee.sector = 'Sambista';
-    addEmployee(employee);
-    // final employees = await listEmployees();
-    // employees.forEach(print);
+  static Gender genderFromString(String genderName) {
+    for (var gender in Gender.values) {
+      if (gender.toString().contains(genderName)) {
+        return gender;
+      }
+    }
+    throw ArgumentError();
   }
 
-  static Gender genderFromString(String string) {
-    switch (string) {
-      case 'masculine':
-        return Gender.masculine;
-      case 'feminine':
-        return Gender.feminine;
-      case 'nonBinary':
-        return Gender.nonBinary;
-      case 'undisclosed':
-        return Gender.undisclosed;
-      default:
-        throw ArgumentError();
+  static Level levelFromString(String levelName) {
+    for (var level in Level.values) {
+      if (level.toString().contains(levelName)) {
+        return level;
+      }
     }
+    throw ArgumentError();
   }
 }

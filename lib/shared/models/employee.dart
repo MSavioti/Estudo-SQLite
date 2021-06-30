@@ -1,5 +1,8 @@
 import 'package:estudo_sqlite/services/sqlite_service.dart';
-import 'package:estudo_sqlite/shared/enums/gender.dart';
+
+enum Gender { masculine, feminine, nonBinary, undisclosed }
+
+enum Level { trainee, junior, middle, senior }
 
 class Employee {
   int id = 0;
@@ -7,12 +10,14 @@ class Employee {
   int age = 0;
   Gender gender = Gender.undisclosed;
   String sector = '';
+  Level level = Level.trainee;
 
   Employee({
     required this.name,
     required this.age,
     required this.gender,
     required this.sector,
+    required this.level,
   });
 
   Map<String, dynamic> toMap() {
@@ -21,6 +26,7 @@ class Employee {
       'age': age,
       'gender': gender.toString().split('.').last,
       'sector': sector,
+      'level': level.toString().split('.').last,
     };
   }
 
@@ -30,6 +36,7 @@ class Employee {
       age: employeeMap['age'],
       gender: SqliteService.genderFromString(employeeMap['gender']),
       sector: employeeMap['sector'],
+      level: SqliteService.levelFromString(employeeMap['level']),
     );
     employee.id = employeeMap['id'];
     return employee;
@@ -37,6 +44,6 @@ class Employee {
 
   @override
   String toString() {
-    return '\nEmployee n° $id\nName: $name\nAge: $age\nGender: ${gender.toString().split('.').last}\nSector: $sector\n';
+    return '\nEmployee n° $id\nName: $name\nAge: $age\nGender: ${gender.toString().split('.').last}\nSector: $sector\nLevel: ${level.toString().split('.').last}\n';
   }
 }

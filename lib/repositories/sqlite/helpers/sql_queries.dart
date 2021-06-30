@@ -2,7 +2,7 @@ import 'package:estudo_sqlite/shared/models/employee.dart';
 
 class SqlQueries {
   static const String createEmployeeTable =
-      'CREATE TABLE employees(id INTEGER PRIMARY KEY, name TEXT, age INTEGER, gender TEXT, sector TEXT)';
+      'CREATE TABLE $employeesTableName(id INTEGER PRIMARY KEY, name TEXT, age INTEGER, gender TEXT, sector TEXT, level TEXT)';
 
   static const String employeesTableName = 'employees';
 }
