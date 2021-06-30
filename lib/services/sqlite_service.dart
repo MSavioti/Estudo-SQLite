@@ -28,6 +28,10 @@ class SqliteService {
   Future<List<Employee>> listEmployees() async {
     final queriesEmployees = await _repository.listEmployees();
 
+    if (queriesEmployees.isEmpty) {
+      return [];
+    }
+
     return List.generate(queriesEmployees.length, (i) {
       return Employee.fromMap(queriesEmployees[i]);
     });
