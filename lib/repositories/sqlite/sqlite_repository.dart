@@ -75,7 +75,7 @@ class SqliteRepository {
   Future<sqlite.Database> _openDatabase({int version = 1}) async {
     try {
       final databasePath =
-          path.join(await sqlite.getDatabasesPath(), 'test_database.db');
+          path.join(await sqlite.getDatabasesPath(), 'employee_database.db');
       final sqlite.Database database = await sqlite.openDatabase(
         databasePath,
         version: version,
