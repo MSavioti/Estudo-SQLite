@@ -62,10 +62,8 @@ class SqliteRepository {
   }
 
   Future<List<Map<String, dynamic>>> listEmployees() async {
-    print('listing employees');
     try {
       final sqlite.Database db = await database();
-      print(db);
       final List<Map<String, dynamic>> queriesEmployees =
           await db.query(SqlQueries.employeesTableName);
       return queriesEmployees;
@@ -75,7 +73,6 @@ class SqliteRepository {
   }
 
   Future<sqlite.Database> _openDatabase({int version = 1}) async {
-    print('Opening database...');
     try {
       final databasePath =
           path.join(await sqlite.getDatabasesPath(), 'test_database.db');
@@ -87,7 +84,6 @@ class SqliteRepository {
         },
       );
       _database = database;
-      print('Opened database.');
       _initializedDatabase = true;
       return database;
     } catch (e) {
