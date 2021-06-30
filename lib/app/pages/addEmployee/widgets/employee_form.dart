@@ -8,7 +8,6 @@ class EmployeeForm extends StatefulWidget {
 class _EmployeeFormState extends State<EmployeeForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
 
   String? _validateTextField(String? inputText) {
     if ((inputText == null) || (inputText.isEmpty)) {
@@ -21,7 +20,6 @@ class _EmployeeFormState extends State<EmployeeForm> {
   @override
   void dispose() {
     _nameController.dispose();
-    _phoneController.dispose();
     super.dispose();
   }
 
@@ -29,49 +27,33 @@ class _EmployeeFormState extends State<EmployeeForm> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: 16.0),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text('Name'),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: TextFormField(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Name'),
+            TextFormField(
               validator: _validateTextField,
               controller: _nameController,
             ),
-          ),
-          SizedBox(height: 16.0),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text('Phone'),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: TextFormField(
-              validator: _validateTextField,
-              controller: _phoneController,
+            SizedBox(height: 16.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.pop(context);
+                      Navigator.pushReplacementNamed(context, '/');
+                    }
+                  },
+                  child: Text('Submit'),
+                ),
+              ],
             ),
-          ),
-          SizedBox(height: 16.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    Navigator.pop(context);
-                    Navigator.pushReplacementNamed(context, '/');
-                  }
-                },
-                child: Text('Submit'),
-              ),
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

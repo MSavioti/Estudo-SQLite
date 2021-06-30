@@ -11,6 +11,7 @@ class Employee {
   Gender gender = Gender.undisclosed;
   String sector = '';
   Level level = Level.trainee;
+  bool outsourced = false;
 
   Employee({
     required this.name,
@@ -18,6 +19,7 @@ class Employee {
     required this.gender,
     required this.sector,
     required this.level,
+    required this.outsourced,
   });
 
   Map<String, dynamic> toMap() {
@@ -27,6 +29,7 @@ class Employee {
       'gender': gender.toString().split('.').last,
       'sector': sector,
       'level': level.toString().split('.').last,
+      'outsourced': outsourced ? 1 : 0,
     };
   }
 
@@ -37,6 +40,7 @@ class Employee {
       gender: SqliteService.genderFromString(employeeMap['gender']),
       sector: employeeMap['sector'],
       level: SqliteService.levelFromString(employeeMap['level']),
+      outsourced: employeeMap['outsourced'] == 1,
     );
     employee.id = employeeMap['id'];
     return employee;
@@ -44,6 +48,6 @@ class Employee {
 
   @override
   String toString() {
-    return '\nEmployee n° $id\nName: $name\nAge: $age\nGender: ${gender.toString().split('.').last}\nSector: $sector\nLevel: ${level.toString().split('.').last}\n';
+    return '\nEmployee n° $id\nName: $name\nAge: $age\nGender: ${gender.toString().split('.').last}\nSector: $sector\nLevel: ${level.toString().split('.').last}\nTerceirizado: ${outsourced ? 'Sim' : 'Não'}\n';
   }
 }
