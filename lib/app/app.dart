@@ -1,5 +1,6 @@
 import 'package:estudo_sqlite/app/pages/addContact/add_contact_page.dart';
 import 'package:estudo_sqlite/app/pages/home/home_page.dart';
+import 'package:estudo_sqlite/app/pages/viewContact/view_contact_page.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -15,6 +16,7 @@ class App extends StatelessWidget {
       routes: {
         '/': (context) => HomePage(),
         '/addContact': (context) => AddContactPage(),
+        '/viewContact': (context) => ViewContactPage(),
       },
     );
   }

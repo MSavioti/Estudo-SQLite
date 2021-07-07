@@ -1,3 +1,4 @@
+import 'package:estudo_sqlite/app/pages/home/widgets/contact_card.dart';
 import 'package:estudo_sqlite/services/sqlite_service.dart';
 import 'package:estudo_sqlite/shared/models/contact.dart';
 import 'package:flutter/material.dart';
@@ -24,11 +25,8 @@ class _ContactListViewState extends State<ContactListView> {
           itemCount: contacts!.length,
           shrinkWrap: true,
           itemBuilder: (_, i) {
-            return Card(
-              child: ListTile(
-                title: Text(contacts[i].name),
-                subtitle: Text(contacts[i].phone),
-              ),
+            return ContactCard(
+              contact: contacts[i],
             );
           },
         );
