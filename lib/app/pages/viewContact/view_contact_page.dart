@@ -11,6 +11,21 @@ class ViewContactPage extends StatelessWidget {
         title: Text(
           '${contact.name}',
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: IconButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  '/deleteContact',
+                  arguments: contact,
+                );
+              },
+              icon: Icon(Icons.delete),
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -54,7 +69,11 @@ class ViewContactPage extends StatelessWidget {
       ),
       floatingActionButton: ElevatedButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/editContact', arguments: contact);
+          Navigator.pushNamed(
+            context,
+            '/editContact',
+            arguments: contact,
+          );
         },
         child: Icon(
           Icons.edit,
