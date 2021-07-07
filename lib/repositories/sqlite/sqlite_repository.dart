@@ -35,7 +35,7 @@ class SqliteRepository {
   Future<bool> updateContact(Map<String, dynamic> contact) async {
     try {
       final sqlite.Database db = await database();
-      var count = await db.update(
+      await db.update(
         SqlQueries.contactsTableName,
         contact,
         where: 'id = ${contact["id"]}',
