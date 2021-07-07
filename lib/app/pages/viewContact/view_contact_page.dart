@@ -13,17 +13,48 @@ class ViewContactPage extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(contact.name),
-            Text(contact.phone),
-          ],
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: SizedBox(
+              width: 400.0,
+              height: 200.0,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(24.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        contact.name,
+                        style: TextStyle(
+                          fontSize: 24.0,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 16.0,
+                      ),
+                      Text(
+                        'Phone: ${contact.phone}',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
         ),
       ),
-      floatingActionButton: IconButton(
+      floatingActionButton: ElevatedButton(
         onPressed: () {},
-        icon: Icon(
+        child: Icon(
           Icons.edit,
         ),
       ),
