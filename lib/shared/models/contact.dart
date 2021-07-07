@@ -10,6 +10,7 @@ class Contact {
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'name': name,
       'phone': phone,
     };
@@ -26,6 +27,6 @@ class Contact {
 
   @override
   String toString() {
-    return '\nContact n° $id\nName: $name\Phone: $phone\n';
+    return '\nContact n° $id\nName: $name\nPhone: $phone\n';
   }
 }

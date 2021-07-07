@@ -74,6 +74,7 @@ class _AddContactFormState extends State<AddContactForm> {
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
+                          Navigator.popUntil(context, (route) => route.isFirst);
                           Navigator.pushReplacementNamed(context, '/');
                           Contact contact = Contact(
                             name: _nameController.text,

@@ -33,16 +33,18 @@ class SqliteRepository {
   }
 
   Future<bool> updateContact(Map<String, dynamic> contact) async {
+    print("Id: ${contact["id"]}");
     try {
       final sqlite.Database db = await database();
-      await db.update(
+      var count = await db.update(
         SqlQueries.contactsTableName,
         contact,
-        where: 'id = ?',
-        whereArgs: contact["id"],
+        where: 'id = ${contact["id"]}',
       );
+      print("Repo: $count");
       return true;
     } catch (e) {
+      print(e);
       return false;
     }
   }

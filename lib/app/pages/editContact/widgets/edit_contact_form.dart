@@ -47,7 +47,7 @@ class _EditContactFormState extends State<EditContactForm> {
                       fontStyle: FontStyle.italic,
                     ),
                   ),
-                  onSaved: (String? newValue) {
+                  onChanged: (String? newValue) {
                     if (newValue != null) {
                       setState(() {
                         contact.name = newValue;
@@ -68,7 +68,7 @@ class _EditContactFormState extends State<EditContactForm> {
                       fontStyle: FontStyle.italic,
                     ),
                   ),
-                  onSaved: (String? newValue) {
+                  onChanged: (String? newValue) {
                     if (newValue != null) {
                       setState(() {
                         contact.phone = newValue;
@@ -81,10 +81,11 @@ class _EditContactFormState extends State<EditContactForm> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          Navigator.pop(context);
-                          _sqliteService.updateContact(contact);
+                          await _sqliteService.updateContact(contact);
+                          Navigator.popUntil(context, (route) => route.isFirst);
+                          Navigator.pushReplacementNamed(context, '/');
                         }
                       },
                       child: Text('Update'),

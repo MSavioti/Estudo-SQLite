@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
       floatingActionButton: ElevatedButton(
         child: Icon(Icons.add),
         onPressed: () {
-          Navigator.pushReplacementNamed(context, '/addContact');
+          Navigator.pushNamed(context, '/addContact');
         },
       ),
     );
