@@ -1,4 +1,4 @@
-import 'package:estudo_sqlite/app/pages/addEmployee/add_employee_page.dart';
+import 'package:estudo_sqlite/app/pages/addContact/add_contact_page.dart';
 import 'package:estudo_sqlite/app/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +14,7 @@ class App extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => HomePage(),
-        '/addEmployee': (context) => AddEmployeePage(),
+        '/addContact': (context) => AddContactPage(),
       },
     );
   }

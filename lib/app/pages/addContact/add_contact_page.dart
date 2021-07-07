@@ -1,18 +1,18 @@
-import 'package:estudo_sqlite/app/pages/addEmployee/widgets/employee_form.dart';
+import 'package:estudo_sqlite/app/pages/addContact/widgets/add_contact_form.dart';
 import 'package:flutter/material.dart';
 
-class AddEmployeePage extends StatelessWidget {
+class AddContactPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
-          'Add Employee',
+          'Add Contact',
         ),
       ),
       body: Center(
-        child: EmployeeForm(),
+        child: AddContactForm(),
       ),
     );
   }

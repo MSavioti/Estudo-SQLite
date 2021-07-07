@@ -1,6 +1,6 @@
 class SqlQueries {
-  static const String createEmployeeTable =
-      'CREATE TABLE $employeesTableName(id INTEGER PRIMARY KEY, name TEXT, birthday TEXT, gender TEXT, sector TEXT, level TEXT, outsourced INTEGER)';
+  static const String createContactsTable =
+      'CREATE TABLE $contactsTableName(id INTEGER PRIMARY KEY, name TEXT, phone TEXT)';
 
-  static const String employeesTableName = 'employees';
+  static const String contactsTableName = 'contact';
 }

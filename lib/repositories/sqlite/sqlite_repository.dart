@@ -18,12 +18,12 @@ class SqliteRepository {
     }
   }
 
-  Future<bool> addEmployee(Map<String, dynamic> employee) async {
+  Future<bool> addContact(Map<String, dynamic> contact) async {
     try {
       final sqlite.Database db = await database();
       await db.insert(
-        SqlQueries.employeesTableName,
-        employee,
+        SqlQueries.contactsTableName,
+        contact,
         conflictAlgorithm: sqlite.ConflictAlgorithm.replace,
       );
       return true;
@@ -32,14 +32,14 @@ class SqliteRepository {
     }
   }
 
-  Future<bool> updateEmployee(Map<String, dynamic> employee) async {
+  Future<bool> updateContact(Map<String, dynamic> contact) async {
     try {
       final sqlite.Database db = await database();
       await db.update(
-        SqlQueries.employeesTableName,
-        employee,
+        SqlQueries.contactsTableName,
+        contact,
         where: 'id = ?',
-        whereArgs: employee["id"],
+        whereArgs: contact["id"],
       );
       return true;
     } catch (e) {
@@ -47,11 +47,11 @@ class SqliteRepository {
     }
   }
 
-  Future<bool> removeEmployee(int id) async {
+  Future<bool> removeContact(int id) async {
     try {
       final sqlite.Database db = await database();
       await db.delete(
-        SqlQueries.employeesTableName,
+        SqlQueries.contactsTableName,
         where: 'id = ?',
         whereArgs: [id],
       );
@@ -61,12 +61,12 @@ class SqliteRepository {
     }
   }
 
-  Future<List<Map<String, dynamic>>> listEmployees() async {
+  Future<List<Map<String, dynamic>>> listContacts() async {
     try {
       final sqlite.Database db = await database();
-      final List<Map<String, dynamic>> queriesEmployees =
-          await db.query(SqlQueries.employeesTableName);
-      return queriesEmployees;
+      final List<Map<String, dynamic>> queriesContacts =
+          await db.query(SqlQueries.contactsTableName);
+      return queriesContacts;
     } catch (e) {
       rethrow;
     }
@@ -75,12 +75,12 @@ class SqliteRepository {
   Future<sqlite.Database> _openDatabase({int version = 1}) async {
     try {
       final databasePath =
-          path.join(await sqlite.getDatabasesPath(), 'employee_database.db');
+          path.join(await sqlite.getDatabasesPath(), 'contact_database.db');
       final sqlite.Database database = await sqlite.openDatabase(
         databasePath,
         version: version,
         onCreate: (db, version) async {
-          return db.execute(SqlQueries.createEmployeeTable);
+          return db.execute(SqlQueries.createContactsTable);
         },
       );
       _database = database;

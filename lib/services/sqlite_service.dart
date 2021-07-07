@@ -1,5 +1,5 @@
 import 'package:estudo_sqlite/repositories/sqlite/sqlite_repository.dart';
-import 'package:estudo_sqlite/shared/models/employee.dart';
+import 'package:estudo_sqlite/shared/models/contact.dart';
 
 class SqliteService {
   late SqliteRepository _repository;
@@ -8,50 +8,32 @@ class SqliteService {
     _repository = SqliteRepository();
   }
 
-  Future<bool> addEmployee(Employee employee) async {
-    return await _repository.addEmployee(employee.toMap());
+  Future<bool> addContact(Contact contact) async {
+    return await _repository.addContact(contact.toMap());
   }
 
-  Future<bool> updateEmployee(Employee employee) async {
-    return await _repository.updateEmployee(employee.toMap());
+  Future<bool> updateContact(Contact contact) async {
+    return await _repository.updateContact(contact.toMap());
   }
 
-  Future<bool> removeEmployee(Employee employee) async {
-    return await _repository.removeEmployee(employee.id);
+  Future<bool> removeContact(Contact contact) async {
+    return await _repository.removeContact(contact.id);
   }
 
-  Future<Employee> findEmployee(int id) async {
-    final List<Employee> employees = await listEmployees();
-    return employees.where((employee) => employee.id == id).first;
+  Future<Contact> findContact(int id) async {
+    final List<Contact> contacts = await listContacts();
+    return contacts.where((contact) => contact.id == id).first;
   }
 
-  Future<List<Employee>> listEmployees() async {
-    final queriesEmployees = await _repository.listEmployees();
+  Future<List<Contact>> listContacts() async {
+    final queriesContacts = await _repository.listContacts();
 
-    if (queriesEmployees.isEmpty) {
+    if (queriesContacts.isEmpty) {
       return [];
     }
 
-    return List.generate(queriesEmployees.length, (i) {
-      return Employee.fromMap(queriesEmployees[i]);
+    return List.generate(queriesContacts.length, (i) {
+      return Contact.fromMap(queriesContacts[i]);
     });
-  }
-
-  static Gender genderFromString(String genderName) {
-    for (var gender in Gender.values) {
-      if (gender.toString().contains(genderName)) {
-        return gender;
-      }
-    }
-    throw ArgumentError();
-  }
-
-  static Level levelFromString(String levelName) {
-    for (var level in Level.values) {
-      if (level.toString().contains(levelName)) {
-        return level;
-      }
-    }
-    throw ArgumentError();
   }
 }
