@@ -53,7 +53,9 @@ class ViewContactPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/editContact', arguments: contact);
+        },
         child: Icon(
           Icons.edit,
         ),
