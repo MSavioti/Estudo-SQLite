@@ -1,2 +1,1 @@
-# Estudo-SQLite
-App simples para estudar local storage por meio de SQLite.
+Simple app for studying how to implement SQLite in a Flutter app.
